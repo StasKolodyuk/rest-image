@@ -1,0 +1,7 @@
+<configuration debug="true">
+    <jmxConfigurator />
+
+    <include resource="conf/${ENV}/logback.xml" />
+
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+</configuration>
