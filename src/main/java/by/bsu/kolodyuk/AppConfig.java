@@ -1,6 +1,6 @@
 package by.bsu.kolodyuk;
 
-import by.bsu.kolodyuk.web.service.SampleService;
+import by.bsu.kolodyuk.web.service.UserService;
 import by.bsu.kolodyuk.web.filter.SupportCORSFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -46,7 +46,7 @@ public class AppConfig
     {
         JAXRSServerFactoryBean factory = RuntimeDelegate.getInstance().createEndpoint(new Application(),
                 JAXRSServerFactoryBean.class);
-        factory.setServiceBeans(Arrays.asList(sampleService(), swaggerResourceJSON()));
+        factory.setServiceBeans(Arrays.asList(userService(), swaggerResourceJSON()));
         factory.setProviders(Arrays.asList(jsonProvider(), supportCORSFilter(), resourceWriter(), apiWriter()));
         factory.setFeatures(asList(beanValidationFeature()));
         return factory;
@@ -78,9 +78,9 @@ public class AppConfig
     }
 
     @Bean
-    public SampleService sampleService()
+    public UserService userService()
     {
-        return new SampleService();
+        return new UserService();
     }
 
     @Bean
